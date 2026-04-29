@@ -31,7 +31,7 @@ class Prescription
 
     #[ORM\Column]
     #[Groups(['ordonnance:readlist', 'prescription:read', 'consultation:readdetail'])]
-    private ?int $duree_jours = null;
+    private ?int $dureeJours = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['ordonnance:readlist', 'prescription:read', 'consultation:readdetail'])]
@@ -65,12 +65,12 @@ class Prescription
 
     public function getDureeJours(): ?int
     {
-        return $this->duree_jours;
+        return $this->dureeJours;
     }
 
-    public function setDureeJours(int $duree_jours): static
+    public function setDureeJours(int $dureeJours): static
     {
-        $this->duree_jours = $duree_jours;
+        $this->dureeJours = $dureeJours;
 
         return $this;
     }

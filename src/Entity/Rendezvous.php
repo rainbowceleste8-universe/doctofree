@@ -30,11 +30,11 @@ class Rendezvous
 
     #[ORM\Column]
     #[Groups(['rendezvous:readlist', 'rendezvous:readdetail', 'patient:readdetail'])]
-    private ?\DateTime $date_heure = null;
+    private ?\DateTime $dateHeure = null;
 
     #[ORM\Column]
     #[Groups(['rendezvous:readlist', 'rendezvous:readdetail', 'patient:readdetail'])]
-    private ?int $duree_minutes = null;
+    private ?int $dureeMinutes = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['rendezvous:readlist', 'rendezvous:readdetail', 'patient:readdetail'])]
@@ -65,24 +65,24 @@ class Rendezvous
 
     public function getDateHeure(): ?\DateTime
     {
-        return $this->date_heure;
+        return $this->dateHeure;
     }
 
-    public function setDateHeure(\DateTime $date_heure): static
+    public function setDateHeure(\DateTime $dateHeure): static
     {
-        $this->date_heure = $date_heure;
+        $this->dateHeure = $dateHeure;
 
         return $this;
     }
 
     public function getDureeMinutes(): ?int
     {
-        return $this->duree_minutes;
+        return $this->dureeMinutes;
     }
 
-    public function setDureeMinutes(int $duree_minutes): static
+    public function setDureeMinutes(int $dureeMinutes): static
     {
-        $this->duree_minutes = $duree_minutes;
+        $this->dureeMinutes = $dureeMinutes;
 
         return $this;
     }

@@ -1,0 +1,22 @@
+.btn-primary {
+    background-color: var(--admin-primary-color) !important;
+    border-color: var(--admin-primary-color) !important;
+    color: #FFF !important;
+}
+.text-primary {
+    color: var(--admin-primary-color) !important;
+}
+.bg-primary {
+    background-color: var(--admin-primary-color) !important;
+}
+.btn-secondary {
+    background-color: var(--admin-secondary-color) !important;
+    border-color: var(--admin-secondary-color) !important;
+    color: var(--admin-primary-color) !important;
+}
+.text-secondary {
+    color: var(--admin-secondary-color) !important;
+}
+.bg-secondary {
+    background-color: var(--admin-secondary-color) !important;
+}

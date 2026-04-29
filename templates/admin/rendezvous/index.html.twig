@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Rendezvous index{% endblock %}
+
+{% block admin_content %}
+    <h1>Rendezvous index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_heure</th>
+                <th>Duree_minutes</th>
+                <th>Statut</th>
+                <th>Motif</th>
+                <th>Patient</th>
+                <th>Médecin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rendezvou in rendezvouses %}
+            <tr>
+                <td>{{ rendezvou.id }}</td>
+                <td>{{ rendezvou.dateHeure ? rendezvou.dateHeure|date('d/m/Y à H:i') : '' }}</td>
+                <td>{{ rendezvou.dureeMinutes }}</td>
+                <td>{{ rendezvou.statut }}</td>
+                <td>{{ rendezvou.motif }}</td>
+                <td>{{ rendezvou.patient }}</td>
+                <td>{{ rendezvou.medecin }}</td>
+                <td>
+                    <a href="{{ path('app_admin_rendezvous_show', {'id': rendezvou.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

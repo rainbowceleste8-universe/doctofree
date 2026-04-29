@@ -1,0 +1,72 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Patient{% endblock %}
+
+{% block admin_content %}
+    <h1>Patient</h1>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ patient.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ patient.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prenom</th>
+                        <td>{{ patient.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date_naissance</th>
+                        <td>{{ patient.dateNaissance ? patient.dateNaissance|date('d/m/Y') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sexe</th>
+                        <td>{{ patient.sexe }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ patient.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telephone</th>
+                        <td>{{ patient.telephone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ patient.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Numero_secu</th>
+                        <td>{{ patient.numeroSecu }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date_inscription</th>
+                        <td>{{ patient.dateInscription ? patient.dateInscription|date('d/m/Y') : '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12">
+            <h3>Rendez-vous : </h3>
+            <ul>
+                {% for rdv in listeRdvDuPatient %}
+                    <li class="mb-4">
+                        {{ rdv.dateHeure| date('d/m/Y à H:i') }} avec le docteur {{ rdv.medecin }}. Motif : {{ rdv.motif }}. Statut : {{ rdv.statut  }}
+                            {% if rdv.consultation is not null %}
+                                {% include "admin/_partials/_consultation.html.twig" with { consultation: rdv.consultation } %}
+                            {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+    <a href="{{ path('app_admin_patient_index') }}">back to list</a>
+
+{% endblock %}

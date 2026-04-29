@@ -30,7 +30,7 @@ class Consultation
 
     #[ORM\Column]
     #[Groups(['consultation:readlist', 'consultation:readdetail', 'rendezvous:readdetail'])]
-    private ?\DateTime $date_heure = null;
+    private ?\DateTime $dateHeure = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['consultation:readdetail', 'rendezvous:readdetail'])]
@@ -60,12 +60,12 @@ class Consultation
 
     public function getDateHeure(): ?\DateTime
     {
-        return $this->date_heure;
+        return $this->dateHeure;
     }
 
-    public function setDateHeure(\DateTime $date_heure): static
+    public function setDateHeure(\DateTime $dateHeure): static
     {
-        $this->date_heure = $date_heure;
+        $this->dateHeure = $dateHeure;
 
         return $this;
     }

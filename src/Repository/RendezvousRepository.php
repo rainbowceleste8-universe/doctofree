@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Patient;
 use App\Entity\Rendezvous;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -15,29 +16,13 @@ class RendezvousRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Rendezvous::class);
     }
-
-    //    /**
-    //     * @return Rendezvous[] Returns an array of Rendezvous objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('r.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Rendezvous
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findByPatientOrderedByDate(Patient $patient): array
+    {
+        return $this->createQueryBuilder('r')
+            ->where('r.patient = :patient')
+            ->setParameter('patient', $patient)
+            ->orderBy('r.dateHeure', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

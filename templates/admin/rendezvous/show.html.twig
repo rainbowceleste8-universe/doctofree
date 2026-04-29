@@ -1,0 +1,46 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Rendezvous{% endblock %}
+
+{% block admin_content %}
+    <h1>Rendezvous</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rendezvou.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_heure</th>
+                <td>{{ rendezvou.dateHeure ? rendezvou.dateHeure|date('d/m/Y à H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Duree_minutes</th>
+                <td>{{ rendezvou.dureeMinutes }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ rendezvou.statut }}</td>
+            </tr>
+            <tr>
+                <th>Motif</th>
+                <td>{{ rendezvou.motif }}</td>
+            </tr>
+            <tr>
+                <th>Patient</th>
+                <td>{{ rendezvou.patient }}</td>
+            </tr>
+            <tr>
+                <th>Médecin</th>
+                <td>{{ rendezvou.medecin }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if rendezvou.consultation is not null %}
+        {% include "admin/_partials/_consultation.html.twig" with { consultation: rendezvou.consultation } %}
+    {% endif %}
+
+    <a href="{{ path('app_admin_rendezvous_index') }}">back to list</a>
+
+{% endblock %}

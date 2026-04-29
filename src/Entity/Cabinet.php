@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
@@ -36,7 +35,7 @@ class Cabinet
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['cabinet:readlist', 'cabinet:readdetail'])]
+    #[Groups(['cabinet:readlist', 'cabinet:readdetail', 'medecin:readdetail'])]
     private ?string $adresse = null;
 
     #[ORM\Column(length: 255)]
@@ -119,5 +118,9 @@ class Cabinet
         $this->medecins->removeElement($medecin);
 
         return $this;
+    }
+
+    public function __toString() {
+        return $this->getNom();
     }
 }

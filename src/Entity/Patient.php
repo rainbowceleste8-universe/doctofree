@@ -28,6 +28,7 @@ class Patient
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['patient:readlist', 'patient:readdetail'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -40,7 +41,7 @@ class Patient
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Groups(['patient:readlist', 'patient:readdetail'])]
-    private ?\DateTimeImmutable $date_naissance = null;
+    private ?\DateTimeImmutable $dateNaissance = null;
 
     #[ORM\Column(length: 1)]
     private ?string $sexe = null;
@@ -58,11 +59,11 @@ class Patient
 
     #[ORM\Column(length: 255)]
     #[Groups(['patient:readdetail'])]
-    private ?string $numero_secu = null;
+    private ?string $numeroSecu = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Groups(['patient:readdetail'])]
-    private ?\DateTimeImmutable $date_inscription = null;
+    private ?\DateTimeImmutable $dateInscription = null;
 
     /**
      * @var Collection<int, Rendezvous>
@@ -107,12 +108,12 @@ class Patient
 
     public function getDateNaissance(): ?\DateTimeImmutable
     {
-        return $this->date_naissance;
+        return $this->dateNaissance;
     }
 
-    public function setDateNaissance(\DateTimeImmutable $date_naissance): static
+    public function setDateNaissance(\DateTimeImmutable $dateNaissance): static
     {
-        $this->date_naissance = $date_naissance;
+        $this->dateNaissance = $dateNaissance;
 
         return $this;
     }
@@ -167,24 +168,24 @@ class Patient
 
     public function getNumeroSecu(): ?string
     {
-        return $this->numero_secu;
+        return $this->numeroSecu;
     }
 
-    public function setNumeroSecu(string $numero_secu): static
+    public function setNumeroSecu(string $numeroSecu): static
     {
-        $this->numero_secu = $numero_secu;
+        $this->numeroSecu = $numeroSecu;
 
         return $this;
     }
 
     public function getDateInscription(): ?\DateTimeImmutable
     {
-        return $this->date_inscription;
+        return $this->dateInscription;
     }
 
-    public function setDateInscription(\DateTimeImmutable $date_inscription): static
+    public function setDateInscription(\DateTimeImmutable $dateInscription): static
     {
-        $this->date_inscription = $date_inscription;
+        $this->dateInscription = $dateInscription;
 
         return $this;
     }
@@ -217,5 +218,10 @@ class Patient
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getPrenom() . " " . $this->getNom();
     }
 }

@@ -31,11 +31,11 @@ class Ordonnance
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Groups(['ordonnance:readlist', 'ordonnance:readdetail', 'consultation:readdetail'])]
-    private ?\DateTimeImmutable $date_emission = null;
+    private ?\DateTimeImmutable $dateEmission = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Groups(['ordonnance:readlist', 'ordonnance:readdetail', 'consultation:readdetail'])]
-    private ?\DateTimeImmutable $date_validite = null;
+    private ?\DateTimeImmutable $dateValidite = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['ordonnance:readdetail'])]
@@ -64,24 +64,24 @@ class Ordonnance
 
     public function getDateEmission(): ?\DateTimeImmutable
     {
-        return $this->date_emission;
+        return $this->dateEmission;
     }
 
-    public function setDateEmission(\DateTimeImmutable $date_emission): static
+    public function setDateEmission(\DateTimeImmutable $dateEmission): static
     {
-        $this->date_emission = $date_emission;
+        $this->dateEmission = $dateEmission;
 
         return $this;
     }
 
     public function getDateValidite(): ?\DateTimeImmutable
     {
-        return $this->date_validite;
+        return $this->dateValidite;
     }
 
-    public function setDateValidite(\DateTimeImmutable $date_validite): static
+    public function setDateValidite(\DateTimeImmutable $dateValidite): static
     {
-        $this->date_validite = $date_validite;
+        $this->dateValidite = $dateValidite;
 
         return $this;
     }
